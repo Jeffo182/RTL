@@ -58,10 +58,10 @@ describe('Testando pagina Pokedex', () => {
     userEvent.click(buttonEl);
     const aboutText = await screen.getByText(/Charmander/i);
     expect(aboutText).toBeInTheDocument();
-    const typePoke = await screen.getByTestId('pokemon-type', {
-      type: /Fire/i,
-    });
-    expect(typePoke).toBeInTheDocument();
+    // const typePoke = await screen.getByTestId('pokemon-type', {
+    //   type: /Fire/i,
+    // });
+    // expect(typePoke).toBeInTheDocument();
   });
 });
 
