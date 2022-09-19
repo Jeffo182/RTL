@@ -53,11 +53,15 @@ describe('Testando pagina Pokedex', () => {
         />
       </MemoryRouter>,
     );
-    const buttonEl = screen.getByRole('button', { name: /Próximo pokémon/i });
+    const buttonEl = screen.getByTestId('next-pokemon', { name: /Próximo pokémon/i });
     expect(buttonEl).toBeInTheDocument();
     userEvent.click(buttonEl);
     const aboutText = await screen.getByText(/Charmander/i);
     expect(aboutText).toBeInTheDocument();
+    const buttonAllPokes = screen.getAllByTestId('pokemon-type-button');
+    expect(buttonAllPokes[0]).toBeInTheDocument();
+    const buttonPokes = await screen.getByText(/Electric/i);
+    expect(buttonPokes).toBeInTheDocument();
     // const typePoke = await screen.getByTestId('pokemon-type', {
     //   type: /Fire/i,
     // });
