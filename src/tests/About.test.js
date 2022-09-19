@@ -91,16 +91,3 @@ describe('Teste rotas do app', () => {
     expect(notFoundText).toBeInTheDocument();
   });
 });
-
-/* const projectLink = screen.getByRole('link', {
-      name: /projetos/i,
-    });
-    expect(projectLink).toBeInTheDocument();
-    userEvent.click(projectLink);
-
-    const projectText = screen.getByRole('heading', {
-      name: /página de projetos/i,
-      level: 1,
-    });
-    expect(projectText).toBeInTheDocument();
-    // screen.logTestingPlaygroundURL(); */
