@@ -5,8 +5,8 @@ import App from '../App';
 import renderWithRouter from '../renderWithRouter';
 import pokemons from '../data';
 
-describe('', () => {
-  test('Renderizado um card com as informações de determinado pokémon:', () => {
+describe('Verificar informacoes do Card', () => {
+  test('se é renderizado um card com as informações de determinado pokémon:', () => {
     renderWithRouter(<App />);
     const imagePoke = screen.getByRole('img', {
       name: `${pokemons[0].name} sprite`,
@@ -20,7 +20,7 @@ describe('', () => {
     expect(imagePoke).toHaveAttribute('alt', `${pokemons[0].name} sprite`);
     expect(linkDetalhes).toBeInTheDocument();
   });
-  test('Teste se ao clicar no link de navegação do pokémon, é redirecionamento', () => {
+  test('Teste se ao clicar no link e redirecionado para rota detalhes de pokémon', () => {
     const { history } = renderWithRouter(<App />);
     console.log(pokemons);
     const linkDetalhes = screen.getByRole('link', { name: /more details/i });
@@ -36,7 +36,7 @@ describe('', () => {
     expect(favChecked).toHaveAttribute('src', '/star-icon.svg');
     expect(favChecked).toBeInTheDocument();
   });
-  test('', () => {
+  test('testando rotas', () => {
     const { history } = renderWithRouter(<App />);
     act(() => {
       history.push('/pokemons/25/');
