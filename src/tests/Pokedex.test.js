@@ -33,7 +33,7 @@ describe('Testando pagina Pokedex', () => {
     });
     expect(PokedexText).toBeInTheDocument();
   });
-  test('Botao proximo pokemon -Pokedex-', async () => {
+  test('Botao proximo pokemon -Pokedex-', () => {
     const pokemonsFav = {
       4: false,
       10: false,
@@ -56,16 +56,34 @@ describe('Testando pagina Pokedex', () => {
     const buttonEl = screen.getByTestId('next-pokemon', { name: /Próximo pokémon/i });
     expect(buttonEl).toBeInTheDocument();
     userEvent.click(buttonEl);
-    const aboutText = await screen.getByText(/Charmander/i);
+    const aboutText = screen.getByText(/Charmander/i);
     expect(aboutText).toBeInTheDocument();
     const buttonAllPokes = screen.getAllByTestId('pokemon-type-button');
     expect(buttonAllPokes[0]).toBeInTheDocument();
-    const buttonPokes = await screen.getByText(/Electric/i);
+    const buttonPokes = screen.getByText(/Electric/i);
     expect(buttonPokes).toBeInTheDocument();
-    // const typePoke = await screen.getByTestId('pokemon-type', {
-    //   type: /Fire/i,
-    // });
-    // expect(typePoke).toBeInTheDocument();
+    const all = screen.getByText('All');
+    expect(all).toBeInTheDocument();
+    userEvent.click(all);
+    const pokename = 'pokemon-name';
+    const button = screen.getByText('Próximo pokémon');
+    expect(screen.getByTestId(pokename).textContent).toBe(pokemons[0].name);
+    userEvent.click(button);
+    expect(screen.getByTestId(pokename).textContent).toBe(pokemons[1].name);
+    userEvent.click(button);
+    expect(screen.getByTestId(pokename).textContent).toBe(pokemons[2].name);
+    userEvent.click(button);
+    expect(screen.getByTestId(pokename).textContent).toBe(pokemons[3].name);
+    userEvent.click(button);
+    expect(screen.getByTestId(pokename).textContent).toBe(pokemons[4].name);
+    userEvent.click(button);
+    expect(screen.getByTestId(pokename).textContent).toBe(pokemons[5].name);
+    userEvent.click(button);
+    expect(screen.getByTestId(pokename).textContent).toBe(pokemons[6].name);
+    userEvent.click(button);
+    expect(screen.getByTestId(pokename).textContent).toBe(pokemons[7].name);
+    userEvent.click(button);
+    expect(screen.getByTestId(pokename).textContent).toBe(pokemons[8].name);
   });
 });
 
